@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="fileWatcherApp">
+<head>
+    <title>Folder Watching</title>
+    <script src="cdn/socket.io-1.2.0.js"></script>
+    <script type="text/javascript" src="scripts/jquery/dist/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="scripts/jquery-toastmessage-plugin/src/main/resources/css/jquery.toastmessage.css">
+    <link rel="stylesheet" href="cdn/grid.css">
+    <style>
+        body {
+            margin-top: 20px;
+        }
+        .subscript {
+            font-size: xx-small;
+            vertical-align: baseline;
+        }
+        .myGrid{
+            width:500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="resultsAngular" ng-controller="filesCTRL">
+        <files title="Leaseplan"></files><hr>
+    </div>
+</div>
+
+<script type="text/javascript" src="scripts/angular/angular.js"></script>
+<script type="text/javascript" src="cdn/ui-grid-stable.js"></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/jquery-toastmessage-plugin/src/main/javascript/jquery.toastmessage.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/services/services.js"></script>
+<script type="text/javascript" src="js/controllers/controllers.js"></script>
+<script type="text/javascript" src="js/directives/directives.js"></script>
+</body>
+</html>

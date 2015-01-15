@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="fileWatcherApp">
+<head>
+    <title>Folder Watching</title>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script type="text/javascript" src="scripts/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="scripts/jquery-toastmessage-plugin/src/main/resources/css/jquery.toastmessage.css">
+    <style>
+        .subscript {
+            font-size: xx-small;
+            vertical-align: baseline;
+        }
+    </style>
+</head>
+<body>
+<div id="results">
+</div>
+<hr>
+<div id="resultsAngular" ng-controller="filesCTRL">
+    {{dados}}
+</div>
+<script>
+    var socket = io.connect('http://localhost:9001');
+    socket.emit('initial',{});
+    socket
+            .on('message', function (data) {
+                //document.write(data.message);
+            })
+            .on('ficheirosAdicionados', function (data) {
+                //document.write(data.message);
+                //var old = $('#results').text();
+                $('#results').html();
+                $('#results').html(data.total+' ficheiro(s) ' +
+                        '<span class="subscript">('+data.uData+')</span>');
+                $().toastmessage('showNoticeToast',data.message);
+            })
+            .on('initial', function (data) {
+                alert(data);
+            })
+            .on('ficheirosRemovidos', function (data) {
+                $('#results').html();
+                $('#results').html(data.total+' ficheiro(s) ' +
+                        '<span class="subscript">('+data.uData+')</span>');
+                $().toastmessage('showErrorToast',data.message);
+            })
+            .on('initialResposta', function (data) {
+                var total = data.total,
+                        date = data.uData;
+                $('#results').html();
+                $('#results').html(total+' ficheiro(s) ' +
+                        '<span class="subscript">('+date+')</span>');
+            })
+</script>
+<script type="text/javascript" src="scripts/angular/angular.js"></script>
+<script type="text/javascript" src="scripts/jquery-toastmessage-plugin/src/main/javascript/jquery.toastmessage.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/services/services.js"></script>
+<script type="text/javascript" src="js/controllers/controllers.js"></script>
+</body>
+</html>

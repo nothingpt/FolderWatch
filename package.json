@@ -1,0 +1,10 @@
+{
+	"name":"folderWatcher",
+	"description":"app that monitors a folder and sends a message when detects a new file",
+	"version":"0.0.1",
+	"author":"Nuno Santos <nsantos.pessoal@gmail.com>",
+	"dependencies":{
+		"chokidar": ">=0.10.3",
+		"express" : ">=4.0"
+		}
+}
